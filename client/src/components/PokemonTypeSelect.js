@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Select } from "./styles/Select.styled";
 
-export default function PokemonTypeSelect() {
+export default function PokemonTypeSelect({ handleChoose }) {
 
   const [types, setTypes] = useState(null);
 
@@ -21,7 +21,7 @@ export default function PokemonTypeSelect() {
   }, []);
 
   return (
-    <Select defaultValue='placeholder' onChange={event => console.log(event.target.value)}>
+    <Select defaultValue='placeholder' onChange={event => handleChoose(event.target.value)}>
       <option value='placeholder' disabled>Select a Pokemon type</option>
       {types && createOptions(types)}
     </Select>

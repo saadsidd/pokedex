@@ -6,7 +6,15 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    display: flex;
+    justify-content: center;
     background-color: rebeccapurple;
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
