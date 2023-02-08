@@ -1,20 +1,13 @@
-import { useEffect } from 'react';
+import GlobalStyles from './components/styles/Global';
+import PokemonTypeSelect from './components/PokemonTypeSelect';
 
 function App() {
 
-  async function getRequest() {
-    const data = await fetch('/types');
-    const readable = await data.json();
-    console.log(readable);
-  }
-
-  useEffect(() => {
-    console.log('This is run once');
-    getRequest()
-  }, []);
-
   return (
-    <>Hello World</>
+    <>
+      <GlobalStyles />
+      <PokemonTypeSelect />
+    </>
   );
 }
 
