@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
     justify-content: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    background-color: rebeccapurple;
+    background-color: #f3f3f3;
   }
 
   #root {
@@ -19,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
     flex-direction: column;
     align-items: center;
   }
+
 `;
 
 export default GlobalStyles;
