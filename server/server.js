@@ -5,9 +5,8 @@ const app = express();
 app.use(morgan('dev'));
 const PORT = 8080;
 
+app.use(express.static('./public'));
 const types = require('./data/types.json');
-// pokedex-test contains only 10 results
-// const pokedex = require('./data/pokedex-test.json');
 const pokedex = require('./data/pokedex.json');
 
 const getPokemonByType = (type) => {

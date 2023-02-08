@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+
   * {
     box-sizing: border-box;
   }
@@ -8,6 +9,8 @@ const GlobalStyles = createGlobalStyle`
   body {
     display: flex;
     justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     background-color: rebeccapurple;
   }
 
