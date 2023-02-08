@@ -1,0 +1,2 @@
+# Pokedex
+A web app created with React and Node/Express to show a list of Pokemon and their information based on given type. Data from [pokemon.json](https://github.com/fanzeyi/pokemon.json) repository.
