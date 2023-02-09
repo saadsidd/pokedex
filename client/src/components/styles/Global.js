@@ -6,6 +6,10 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html {
+    overflow-y: scroll;
+  }
+
   body {
     display: flex;
     justify-content: center;
