@@ -7,13 +7,12 @@ export const ResultsContainer = styled.main`
 
 export const Result = styled.article`
   width: 100%;
-
-  height: 175px;
-  height: 45px;
+  height: ${({ collapsed }) => (collapsed ? '45px' : '175px')};
 
   display: flex;
   background-color: #ede8e8;
   cursor: pointer;
+  overflow: hidden;
   margin: 10px 0px;
   border-radius: 5px;
   box-shadow:
@@ -21,12 +20,11 @@ export const Result = styled.article`
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   
-  transition: box-shadow 75ms linear;
-  overflow: hidden;
+  transition: box-shadow 75ms linear, height 100ms linear;
   
   &:hover {
     box-shadow:
-    rgba(6, 24, 44, 0.4) 0px 0px 7px 2px,
+    rgba(6, 24, 44, 0.4) 0px 0px 20px 2px,
     rgba(6, 24, 44, 0.65) 0px 7px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 0px 0px inset;
   }
@@ -42,6 +40,7 @@ export const ImageContainer = styled.div`
 
   & > img {
     max-height: 100%;
+    object-fit: contain;
   }
 `;
 
@@ -50,9 +49,18 @@ export const InfoContainer = styled.div`
 `;
 
 export const Title = styled.header`
+  display: flex;
+  justify-content: space-between;
   font-weight: 900;
   padding: 10px 10px;
   border-bottom: 1px solid #bbb;
+
+  & > img {
+    width: 15px;
+    margin-right: 5px;
+    transform: ${({ collapsed }) => (collapsed ? 'rotate(90deg)' : 'rotate(0deg)')};
+    transition: transform 100ms ease;
+  }
 `;
 
 export const StatsContainer = styled.footer`

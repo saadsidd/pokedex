@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { ResultsContainer, Result, ImageContainer, InfoContainer, Title, StatsContainer, StatLabel } from "./styles/Results.styled";
-import { TypeBadge } from "./styles/TypeBadge.styled";
+import Pokemon from "./Pokemon";
+import { ResultsContainer } from "./styles/Results.styled";
 
 
 export default function PokemonResults({ typeChoice }) {
@@ -17,22 +17,16 @@ export default function PokemonResults({ typeChoice }) {
   const createResults = (results) => {
     return results.map((pokemon) => {
       return (
-        <Result key={pokemon.id} onClick={event => console.log(event.currentTarget)}>
-
-          <ImageContainer><img src={`./thumbnails/${pokemon.id.toString().padStart(3, '0')}.png`} alt={pokemon.name.english} /></ImageContainer>
-
-          <InfoContainer>
-            <Title>{`#${pokemon.id.toString().padStart(3, '0')} |\u00A0 ${pokemon.name.english}`}</Title>
-            <StatsContainer>
-              <div><StatLabel>Type: &nbsp;&nbsp;</StatLabel>{pokemon.type.map((type, index) => <TypeBadge type={type} key={index}>{type}</TypeBadge>)}</div>
-              <div><StatLabel>HP: </StatLabel>{pokemon.base.HP}</div>
-              <div><StatLabel>Attack: </StatLabel>{pokemon.base.Attack}</div>
-              <div><StatLabel>Defense: </StatLabel>{pokemon.base.Defense}</div>
-              <div><StatLabel>Speed: </StatLabel>{pokemon.base.Speed}</div>
-            </StatsContainer>
-          </InfoContainer>
-
-        </Result>
+        <Pokemon
+          key={pokemon.id}
+          id={pokemon.id}
+          name={pokemon.name.english}
+          types={pokemon.type}
+          hp={pokemon.base.HP}
+          attack={pokemon.base.Attack}
+          defense={pokemon.base.Defense}
+          speed={pokemon.base.Speed}
+        />
       )
     });
   }
