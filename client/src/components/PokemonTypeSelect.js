@@ -22,7 +22,7 @@ export default function PokemonTypeSelect({ handleChoose }) {
 
   return (
     <TypeSelect defaultValue='placeholder' onChange={event => handleChoose(event.target.value)}>
-      <option value='placeholder' disabled>Select a Pokemon type</option>
+      <option value='placeholder' disabled>Select a Pokémon type</option>
       {types && createOptions(types)}
     </TypeSelect>
   )
