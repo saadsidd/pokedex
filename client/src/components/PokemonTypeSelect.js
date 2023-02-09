@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Select } from "./styles/Select.styled";
+import { TypeSelect } from "./styles/TypeSelect.styled";
 
 export default function PokemonTypeSelect({ handleChoose }) {
 
@@ -21,9 +21,9 @@ export default function PokemonTypeSelect({ handleChoose }) {
   }, []);
 
   return (
-    <Select defaultValue='placeholder' onChange={event => handleChoose(event.target.value)}>
+    <TypeSelect defaultValue='placeholder' onChange={event => handleChoose(event.target.value)}>
       <option value='placeholder' disabled>Select a Pokemon type</option>
       {types && createOptions(types)}
-    </Select>
+    </TypeSelect>
   )
 }
