@@ -24,14 +24,15 @@ export const Result = styled.article`
   
   &:hover {
     box-shadow:
-    rgba(6, 24, 44, 0.4) 0px 0px 20px 2px,
+    rgba(6, 24, 44, 0.4) 0px 0px 10px 2px,
     rgba(6, 24, 44, 0.65) 0px 7px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 0px 0px inset;
   }
 `;
 
-export const ImageContainer = styled.div`
+export const Thumbnail = styled.div`
   display: flex;
+  min-width: 150px;
   flex-direction: column;
   justify-content: center;
   background-color: #f2f2f2;
