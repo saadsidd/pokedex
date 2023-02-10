@@ -2,24 +2,35 @@ const express = require('express');
 const morgan = require('morgan');
 
 const app = express();
-app.use(morgan('dev'));
 const PORT = 8080;
-
-app.use(express.static('./public'));
 const types = require('./data/types.json');
 const pokedex = require('./data/pokedex.json');
 
-const getPokemonByType = (type) => {
+// Logs all http requests to console to help development
+app.use(morgan('dev'));
+// Making thumbnails folder static
+app.use(express.static('./public'));
+
+
+// Filter pokedex.json by matching type and return sliced 10 results
+const getPokemonByType = (type, page) => {
+  const pageNum = parseInt(page);
+  const start = (pageNum - 1) * 10;
+  const end = pageNum * 10;
+
   const filtered = pokedex.filter(pokemon => pokemon.type.includes(type));
-  return filtered.slice(0, 10);
+  return filtered.slice(start, end);
 }
 
+// Sends all of types.json to populate drop-down menu
 app.get('/types', (req, res) => {
   res.send(types);
 });
 
-app.get('/types/:type', (req, res) => {
-  const results = getPokemonByType(req.params.type);
+// Sends filtered array of pokemon objects based on given type and page number
+app.get('/types/:type/:page', (req, res) => {
+  const { type, page } = req.params;
+  const results = getPokemonByType(type, page);
   res.send(results);
 });
 
