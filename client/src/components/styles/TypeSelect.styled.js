@@ -7,6 +7,8 @@ export const TypeSelectContainer = styled.header`
   align-items: center;
   padding: 10px 0px;
   background-color: #f1dddd;
+  border: 1px solid black;
+  box-shadow: #5e5e5e -1px 4px 10px 0px;
 `;
 
 export const PokedexImage = styled.div`
