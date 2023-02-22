@@ -1,25 +1,8 @@
-import { useState, useEffect } from "react";
 import Pokemon from "./Pokemon";
 import { ResultsContainer } from "./styles/Results.styled";
 
 
-export default function PokemonResults({ page, typeChoice }) {
-
-  const [results, setResults] = useState(null);
-
-  useEffect(() => {
-
-    const fetchPokemon = async (typeChoice) => {
-      const data = await fetch(`/types/${typeChoice}/${page}`);
-      const pokemonJSON = await data.json();
-      setResults(pokemonJSON);
-    }
-
-    if (typeChoice) {
-      fetchPokemon(typeChoice);
-    }
-
-  }, [typeChoice, page]);
+export default function PokemonResults({ results }) {
 
   const createResults = (results) => {
     return results.map((pokemon) => {
@@ -40,7 +23,7 @@ export default function PokemonResults({ page, typeChoice }) {
 
   return (
     <ResultsContainer>
-      {results && createResults(results)}
+      {results.length > 0 && createResults(results)}
     </ResultsContainer>
   )
 }
