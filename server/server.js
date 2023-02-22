@@ -13,13 +13,15 @@ app.use(express.static('./public'));
 
 
 // Filter pokedex.json by matching type and return sliced 10 results
-const getPokemonByType = (type, page) => {
+const getPokemonByTypeAndTotalPages = (type, page) => {
   const pageNum = parseInt(page);
   const start = (pageNum - 1) * 10;
   const end = pageNum * 10;
 
   const filtered = pokedex.filter(pokemon => pokemon.type.includes(type));
-  return filtered.slice(start, end);
+  const tenPokemon = filtered.slice(start, end);
+  const totalPages = Math.ceil(filtered.length / 10);
+  return {tenPokemon, totalPages};
 }
 
 // Sends all of types.json to populate drop-down menu
@@ -30,7 +32,7 @@ app.get('/types', (req, res) => {
 // Sends filtered array of pokemon objects based on given type and page number
 app.get('/types/:type/:page', (req, res) => {
   const { type, page } = req.params;
-  const results = getPokemonByType(type, page);
+  const results = getPokemonByTypeAndTotalPages(type, page);
   res.send(results);
 });
 
