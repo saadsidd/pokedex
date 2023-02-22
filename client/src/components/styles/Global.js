@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import typeColors from './helpers/typeColors';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -15,7 +16,7 @@ const GlobalStyles = createGlobalStyle`
     justify-content: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    background-color: #f3f3f3;
+    background-color: ${({ typeChoice }) => typeChoice ? typeColors[typeChoice] + '80' : '#f3f3f3'};
   }
 
   #root {
