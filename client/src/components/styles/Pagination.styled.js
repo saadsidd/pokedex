@@ -17,6 +17,7 @@ const PageButton = styled.button`
   background-color: #333;
   cursor: pointer;
   transition: transform 100ms linear;
+  visibility: ${({ hide }) => (hide ? 'hidden' : 'visible')};
 
   &:hover {
     background-color: #fff;
